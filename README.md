@@ -1,6 +1,6 @@
 # Budget Tracker With Notion API's
 
-A new Flutter project.
+Budget Tracker with Flutter and the Notion API. You'll learn how to use Notion's API to retrieve data, save data and delete data element.
 
 ## Getting Started
 
