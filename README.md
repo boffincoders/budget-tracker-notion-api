@@ -2,6 +2,9 @@
 
 Budget Tracker with Flutter and the Notion API. You'll learn how to use Notion's API to retrieve data, save data and delete data element.
 
+
+<img src="https://github.com/boffincoders/budget-tracker-notion-api/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2012%20Pro%20Max%20-%202021-07-23%20at%2014.26.20.png?raw=true" width="300" height="620" /> <img src="https://github.com/boffincoders/budget-tracker-notion-api/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2012%20Pro%20Max%20-%202021-07-23%20at%2014.27.19.png?raw=true" width="300" height="620" /> <img src="https://github.com/boffincoders/budget-tracker-notion-api/blob/master/images/Simulator%20Screen%20Shot%20-%20iPhone%2012%20Pro%20Max%20-%202021-07-23%20at%2014.27.32.png?raw=true" width="300" height="620" />
+
 ## Getting Started
 
 This project is a starting point for a Flutter application.
