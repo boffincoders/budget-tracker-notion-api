@@ -1,4 +1,4 @@
-# budget_tracker_notion
+# Budget Tracker With Notion API's
 
 A new Flutter project.
 
