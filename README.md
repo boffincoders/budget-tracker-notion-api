@@ -27,6 +27,8 @@ Budget Tracker with Flutter and the Notion API. You'll learn how to use Notion's
  ```
  git clone https://github.com/boffincoders/budget-tracker-notion-api.git
  ```  
+ - Create .env file at your project root diretory.
+ - Add "NOTION_API_KEY" and "NOTION_DATABASE_ID" in your .env file. 
  - Run the app with Android Studio or Visual Studio. Or the command line.
  
  ```
