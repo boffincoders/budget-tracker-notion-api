@@ -19,7 +19,7 @@ Budget Tracker with Flutter and the Notion API. You'll learn how to use Notion's
 - [ ] block children
 
 ## Getting Started
-  - Sign up to [notion.so](https://www.notion.so/) workspace.
+  - Sign up into [notion.so](https://www.notion.so/) workspace.
   - Create your page and add properties.
   - If you don't have Flutter SDK installed, please visit official [Flutter](https://flutter.dev/) site.
   - Fetch latest source code from master branch.
