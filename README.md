@@ -9,6 +9,7 @@ Budget Tracker with Flutter and the Notion API. You'll learn how to use Notion's
 
 - [x] Notion API Integration
 - [x] Get data from database
+- [x] List Databases
 - [x] Create a new page
 - [x] Delete page
 - [x] Spending chart
