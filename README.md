@@ -13,7 +13,7 @@ Budget Tracker with Flutter(BLoC Pattern) and the Notion API. You'll learn how t
 - [x] Create a new page
 - [x] Delete page
 - [x] Spending chart
-- [ ] Update page
+- [x] Update page
 - [ ] List all users
 - [ ] Retrive a user
 - [ ] block children
