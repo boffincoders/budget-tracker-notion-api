@@ -27,6 +27,9 @@ class BudgetBloc {
   addItem(Map<String, dynamic> data) async {
     return await _repository.addItems(data);
   }
+  editItem(Map<String, dynamic> data) async {
+    return await _repository.editItems(data);
+  }
 
   deletePage(String pageId) async {
     return await _repository.deletePage(pageId);

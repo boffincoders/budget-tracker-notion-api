@@ -6,7 +6,6 @@ import 'package:budget_tracker_notion/src/models/list_database.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart';
 
-
 class BudgetRepository {
   final _baseUrl = 'https://api.notion.com/v1';
   final Client _client;
@@ -96,6 +95,41 @@ class BudgetRepository {
             HttpHeaders.authorizationHeader: 'Bearer $secret',
             HttpHeaders.contentTypeHeader: 'application/json',
             'Notion-Version': '2021-05-13',
+          },
+          body: json.encode(body));
+      return response;
+    } catch (_) {
+      throw const Failure(message: 'Something went wrong 2');
+    }
+  }
+
+  Future<dynamic> editItems(Map<String, dynamic> data) async {
+    try {
+      final url = '$_baseUrl/pages/${data['pageId']}';
+      var body = {
+        //"parent": {"database_id": dbId},
+        "properties": {
+          "Name": {
+            "title": [
+              {
+                "text": {"content": data['name']}
+              }
+            ]
+          },
+          "Category": {
+            "select": {"name": data['category']}
+          },
+          "Date": {
+            "date": {"start": data['date']}
+          },
+          "Price": {"number": double.parse(data['price'])}
+        }
+      };
+      final response = await _client.patch(Uri.parse(url),
+          headers: {
+            HttpHeaders.authorizationHeader: 'Bearer $secret',
+            HttpHeaders.contentTypeHeader: 'application/json',
+            'Notion-Version': '2021-07-27',
           },
           body: json.encode(body));
       return response;

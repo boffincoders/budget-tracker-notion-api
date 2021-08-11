@@ -131,12 +131,21 @@ class _BudgetScreenState extends State<BudgetScreen> {
                               ),
                             ),
                             secondaryActions: <Widget>[
-                              /* IconSlideAction(
+                              IconSlideAction(
                                 caption: 'Edit',
-                                color: Colors.black45,
+                                color: Colors.lightGreen[300],
                                 icon: Icons.edit,
-                                onTap: () {},
-                              ),*/
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => CreatePage(
+                                              itemData: element.itemData,
+                                              isEdit: true,
+                                            )),
+                                  );
+                                },
+                              ),
                               IconSlideAction(
                                 caption: 'Delete',
                                 color: Colors.red[400],

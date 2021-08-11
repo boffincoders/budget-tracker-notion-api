@@ -2,13 +2,17 @@ import 'dart:convert';
 
 import 'package:budget_tracker_notion/src/blocs/budget_provider.dart';
 import 'package:budget_tracker_notion/src/errors/failure.dart';
+import 'package:budget_tracker_notion/src/models/item_model.dart';
 import 'package:budget_tracker_notion/src/models/list_database.dart'
     as database;
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 
 class CreatePage extends StatefulWidget {
-  const CreatePage({Key? key}) : super(key: key);
+  final ItemModel? itemData;
+  final bool isEdit;
+
+  const CreatePage({this.itemData, this.isEdit = false});
 
   @override
   _CreatePageState createState() => _CreatePageState();
@@ -27,6 +31,13 @@ class _CreatePageState extends State<CreatePage> {
     // TODO: implement initState
     super.initState();
     saveDate = DateFormat('yyyy-MM-dd').format(DateTime.now());
+    if (widget.isEdit) {
+      nameController.text = widget.itemData!.name;
+      priceController.text = widget.itemData!.price.toString();
+      currentSelectedValue = widget.itemData!.category;
+      selectedDate = DateFormat('MMMM dd, yyyy').format(widget.itemData!.date);
+      saveDate = DateFormat('yyyy-MM-dd').format(widget.itemData!.date);
+    }
   }
 
   @override
@@ -106,16 +117,32 @@ class _CreatePageState extends State<CreatePage> {
       showSnackBar("Price is required");
       return;
     }
-    var data = {
-      "name": nameController.text,
-      "price": priceController.text,
-      "category": currentSelectedValue,
-      "date": saveDate
-    };
+
     setState(() {
       loading = true;
     });
-    var response = await bloc.addItem(data);
+    var response;
+    String message;
+    if (widget.isEdit) {
+      var data = {
+        "name": nameController.text,
+        "price": priceController.text,
+        "category": currentSelectedValue,
+        "date": saveDate,
+        "pageId": widget.itemData!.pageId,
+      };
+      message = "Data updated successfully";
+      response = await bloc.editItem(data);
+    } else {
+      var data = {
+        "name": nameController.text,
+        "price": priceController.text,
+        "category": currentSelectedValue,
+        "date": saveDate,
+      };
+      message = "Data added successfully";
+      response = await bloc.addItem(data);
+    }
     if (mounted)
       setState(() {
         loading = false;
@@ -123,7 +150,7 @@ class _CreatePageState extends State<CreatePage> {
     final int statusCode = response.statusCode;
     if (statusCode == 200) {
       bloc.fetchItems();
-      showSnackBar("Data added successfully");
+      showSnackBar(message);
       Navigator.of(context).pop();
     } else {
       final data = jsonDecode(response.body);
